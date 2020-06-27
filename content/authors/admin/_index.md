@@ -2,7 +2,7 @@
 organizations:
   - name: Studying @ MIT
     url: https://www.mit.edu/
-  - name: Research @ CMU Guruswami Lab
+  - name: Research @ CMU
     url: http://www.cs.cmu.edu/~venkatg/
   - name: ML Consulting @ Peptide Logic
     url: https://www.peptidelogic.com/
