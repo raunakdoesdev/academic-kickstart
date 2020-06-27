@@ -1,7 +1,11 @@
 ---
 organizations:
-  - name: Massachusetts Institute of Technology
-  - name: Carnegie Mellon University
+  - name: Studying @ MIT
+    url: https://www.mit.edu/
+  - name: Research @ CMU Guruswami Lab
+    url: http://www.cs.cmu.edu/~venkatg/
+  - name: ML Consulting @ Peptide Logic
+    url: https://www.peptidelogic.com/
 superuser: true
 authors:
   - admin
