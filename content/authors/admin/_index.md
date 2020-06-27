@@ -1,4 +1,7 @@
 ---
+title: Raunak (Sauhaarda) Chowdhuri
+role: Machine Learning Researcher and Undergraduate Student
+avatar_filename: 16-chowdhuri-sa-20w.jpg
 organizations:
   - name: Studying @ MIT
     url: https://www.mit.edu/
@@ -9,8 +12,6 @@ organizations:
 superuser: true
 authors:
   - admin
-title: Raunak (Sauhaarda) Chowdhuri
-role: Machine Learning Researcher and Undergraduate Student
 bio: My research interests include multi-modal learning, explainable-AI, and
   few-shot/one-shot/representation learning.
 interests:
