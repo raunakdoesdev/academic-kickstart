@@ -40,4 +40,4 @@ user_groups:
   - Researchers
   - Visitors
 ---
-I am a machine learning researcher, consultant, and an undergraduate student at the Massachussets Institute of Technology. I'm passionate about machine learning as a tool for effecting positive change. In my free time I enjoy reading Stoic/Buddhist philosophy, stargazing, singing Indian classical music, and going on walks with my dog Peanut.
+I am a machine learning researcher, consultant, and an undergraduate student at the Massachussets Institute of Technology. I'm passionate about machine learning as a tool for effecting positive change. In my free time I enjoy reading Stoic/Buddhist philosophy, stargazing, singing Indian classical music, and walking my dog, Peanut.
