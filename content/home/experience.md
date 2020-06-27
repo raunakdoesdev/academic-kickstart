@@ -37,8 +37,8 @@ date_format = "Jan 2006"
   date_start = "2020-02-01"
   date_end = ""
   description = """
-  * Designed a pipeline for mouse behavior classification with deep learning to automate data annotation for a neuroscience drug discovery program supported by NIH Grants.
-  * Ongoing efforts toward a first-author publication covering the novel techniques in this approach.
+  &#8226; Designed a pipeline for mouse behavior classification with deep learning to automate data annotation for a neuroscience drug discovery program supported by NIH Grants.
+  &#8226; Ongoing efforts toward a first-author publication covering the novel techniques in this approach.
   """
 
 [[experience]]
@@ -49,7 +49,7 @@ date_format = "Jan 2006"
   date_start = "2019-06-01"
   date_end = "2019-08-01"
   description = """
-  * Conducted research using reinforcement learning to direct quadcopters to herd bird flocks away from airports/no fly zones, and investigated other leader-follower control problems with reinforcement learning.
+  &#8226; Conducted research using reinforcement learning to direct quadcopters to herd bird flocks away from airports/no fly zones, and investigated other leader-follower control problems with reinforcement learning.
   """
 
 [[experience]]
@@ -60,10 +60,10 @@ date_format = "Jan 2006"
   date_start = "2017-04-01"
   date_end = "2018-06-01"
   description = """
-  * Implemented a novel modal insertion method to allow a single deep neural network to learn several distinct “behavioral modes” of operation simultaneously for autonomous driving and published this research.
-  * Adapted SqueezeNet network from ImageNet to perform regression based driving tasks.
-  * Managed code repository and transferred Caffe repository to PyTorch/H5PY Training repository.
-  * Migrated RC robots from TX1 to TX2 and Qualcomm Snapdragon Flight platforms using ROS control system.
+  &#8226; Implemented a novel modal insertion method to allow a single deep neural network to learn several distinct “behavioral modes” of operation simultaneously for autonomous driving and published this research.
+  &#8226; Adapted SqueezeNet network from ImageNet to perform regression based driving tasks.
+  &#8226; Managed code repository and transferred Caffe repository to PyTorch/H5PY Training repository.
+  &#8226; Migrated RC robots from TX1 to TX2 and Qualcomm Snapdragon Flight platforms using ROS control system.
   """
 
 +++
