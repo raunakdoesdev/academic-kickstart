@@ -1,6 +1,6 @@
 ---
 title: "PhonoNet: Multi-Stage Deep Neural Networks for Raga Identification in Hindustani Classical Music"
-date: 2019-01-01
+date: 2019-06-27
 publishDate: 2020-06-27T22:46:19.524061Z
 authors: ["Sauhaarda Chowdhuri"]
 publication_types: ["1"]
