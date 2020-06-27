@@ -8,7 +8,7 @@ abstract: "Audio information retrieval (AIR) is a field with potential applicati
 featured: true
 publication: "*Proceedings of the 2019 on International Conference on Multimedia Retrieval*"
 tags: ["Information Retrieval", "Deep Learning", "Indian Classical Music", "Audio"]
-url_pdf: "https://doi.org/10.1145/3323873.3325039"
+url_pdf: "https://dl.acm.org/doi/pdf/10.1145/3323873.3325039"
 doi: "10.1145/3323873.3325039"
 ---
 
