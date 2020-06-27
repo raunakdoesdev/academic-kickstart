@@ -1,7 +1,7 @@
 ---
 title: Raunak (Sauhaarda) Chowdhuri
 role: Machine Learning Researcher and Undergraduate Student
-avatar_filename: 16-chowdhuri-sa-20w.jpg
+avatar_filename: avatar.jpg
 organizations:
   - name: Studying @ MIT
     url: https://www.mit.edu/
