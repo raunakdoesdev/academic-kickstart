@@ -18,17 +18,17 @@ interests:
   - Multi-Modal Data
   - Explainable AI
   - Representation Learning
-  - Few-Shot Learning
+  - AI Education
 social:
   - icon: twitter
     icon_pack: fab
-    link: https://twitter.com/GeorgeCushen
+    link: https://twitter.com/sauhaarda
   - icon: google-scholar
     icon_pack: ai
-    link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
+    link: https://scholar.google.com/citations?user=gkUpJmkAAAAJ&hl=en
   - icon: github
     icon_pack: fab
-    link: https://github.com/gcushen
+    link: https://github.com/sauhaardac/
 education:
   courses:
     - year: 2024
@@ -39,4 +39,4 @@ user_groups:
   - Researchers
   - Visitors
 ---
-Lorem epsum dior alsdfkajs;ldkfjas;ldkfa
+I am a machine learning researcher, consultant, and a undergraduate student at the Massachussets Institute of Technology (MIT). I'm passionate about using machine learning as a tool for effecting positive change. In my free time I enjoy reading Stoic philosophy, stargazing, singing Indian classical music, and going on walks with my dog Peanut.
