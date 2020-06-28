@@ -1,24 +1,16 @@
 ---
-title: Raunak (Sauhaarda) Chowdhuri
+title: Raunak Chowdhuri
 role: Machine Learning Researcher and Undergraduate Student
 avatar_filename: avatar.jpg
 organizations:
-  - name: Studying @ MIT
-    url: https://www.mit.edu/
-  - name: Research @ CMU
-    url: http://www.cs.cmu.edu/~venkatg/
-  - name: ML Consulting @ Peptide Logic
-    url: https://www.peptidelogic.com/
 superuser: true
 authors:
   - admin
 bio: My research interests include multi-modal learning, explainable-AI, and
   few-shot/one-shot/representation learning.
 interests:
-  - Artificial Intelligence
-  - Multi-Modal Data
   - Explainable AI
-  - Representation Learning
+  - Multi-Modal & Representation Learning
   - AI Education
 social:
   - icon: twitter
