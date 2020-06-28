@@ -13,7 +13,8 @@ interests:
   - AI Education
   - Multi-Modal Data
   - Representation Learning
-  - Cognitive Science/Economics
+  - Cognitive Science
+  - Economics
 social:
   - icon: twitter
     icon_pack: fab
