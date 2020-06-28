@@ -10,8 +10,10 @@ bio: My research interests include multi-modal learning, explainable-AI, and
   few-shot/one-shot/representation learning.
 interests:
   - Explainable AI
-  - Multi-Modal & Representation Learning
   - AI Education
+  - Multi-Modal Data
+  - Representation Learning
+  - Cognitive Science/Economics
 social:
   - icon: twitter
     icon_pack: fab
