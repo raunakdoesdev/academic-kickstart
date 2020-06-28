@@ -1,5 +1,5 @@
 ---
-title: Raunak Chowdhuri
+title: Sauhaarda (Raunak) Chowdhuri
 role: Machine Learning Researcher and Undergraduate Student
 avatar_filename: avatar.jpg
 organizations:
