@@ -1,7 +1,7 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "Seeing What a Gan Cant Generate"
+title: "Seeing What a Gan Cannot Generate"
 subtitle: ""
 summary: ""
 authors: []
@@ -28,5 +28,5 @@ image:
 projects: []
 ---
 
-# This is a test
+### This is a test
 Hello :)
