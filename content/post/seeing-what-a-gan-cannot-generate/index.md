@@ -48,11 +48,9 @@ One of the first papers to quantify the problem of mode collapse was *Improved T
 1. Overall image variety (i.e. there are many different types of images in the dataset)
 2. Individual image specificity (i.e. a particular image is distinctly one thing, not confused with other classes)
 
-This is accomplished with the following metric: $$\operatorname{IS}(G)=\exp \left(\mathbb{E}_{\mathbf{x} \sim p_{g}} D_{K L}(p(y \vert \mathbf{x}) \| p(y))\right)$$
+This is accomplished with the following metric: 
 
-{{< video src="https://revresearch.s3.us-east-2.amazonaws.com/InceptionScore.mp4" controls="yes" >}}
-
-Here's an equation breakdown: 
+{{< video src="https://revresearch.s3.us-east-2.amazonaws.com/InceptionScore.mp4" controls="yes" autoplay>}} 
 
 [^1]: Salimans, T., Goodfellow, I., Zaremba, W., Cheung, V., Radford, A., & Chen, X. (2016). Improved techniques for training gans. In *Advances in neural information processing systems* (pp. 2234-2242).
 
