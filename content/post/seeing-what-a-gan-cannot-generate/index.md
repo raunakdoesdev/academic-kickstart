@@ -28,12 +28,19 @@ image:
 projects: []
 ---
 
+This is an overview of the paper *Seeing What a GAN Cannot Generate* [^2]
+
+[^2]: [Bau, D., Zhu, J. Y., Wulff, J., Peebles, W., Strobelt, H., Zhou, B., & Torralba, A. (2019). Seeing what a gan cannot generate. In *Proceedings of the IEEE International Conference on Computer Vision* (pp. 4502-4511).](http://ganseeing.csail.mit.edu/)
+
+
+
 ## GANs
+
 Generative adversarial networks, or GANs, can be used to generate new images by taking advantage of the interplay between two neural networks: a generator and a discriminator. The generator is like an art counterfeiter, trying to produce realistic "fake" images, and the discriminator is like an art critic, trying to determine if a given image is real or fake.
 ## Mode Collapse
 The problem is, the generator can get kind of lazy and start outsmarting the discriminator. Let's say your dataset has an equal number of images of people, fountains, and churches. Instead of creating fakes of all of these kinds of images, the generator might learn it's much easier to just create images of fake fountains and ignore the rest.
 
-This is called mode collapse, because certain modes of generation (the people and the churches in this example) are no longer created by the generator. If we think of the generator as a function $$ G(x) $$, then the range of this function (the possible values it can produce) is reduced.
+This is called mode collapse, because certain modes of generation (the people and the churches in this example) are no longer created by the generator. If we think of the generator as a function $G(x) $, then the range of this function (the possible values it can produce) is reduced.
 
 This is a real problem, because it's hard to detect when mode collapse is happening since the main metric, the discriminator, is fooled by the limited modes the generator produces.
 ## Inception Score and Fréchet Inception Distance
@@ -41,10 +48,9 @@ One of the first papers to quantify the problem of mode collapse was *Improved T
 1. Overall image variety (i.e. there are many different types of images in the dataset)
 2. Individual image specificity (i.e. a particular image is distinctly one thing, not confused with other classes)
 
-This is accomplished with the following metric:
-$$\operatorname{IS}(G)=\exp \left(\mathbb{E}_{\mathbf{x} \sim p_{g}} D_{K L}(p(y \vert \mathbf{x}) \| p(y))\right)$$
+This is accomplished with the following metric: $$\operatorname{IS}(G)=\exp \left(\mathbb{E}_{\mathbf{x} \sim p_{g}} D_{K L}(p(y \vert \mathbf{x}) \| p(y))\right)$$
 
-{{< video library="1" src="https://revresearch.s3.us-east-2.amazonaws.com/InceptionScore.mp4" controls="yes" >}}
+{{< video src="https://revresearch.s3.us-east-2.amazonaws.com/InceptionScore.mp4" controls="yes" >}}
 
 Here's an equation breakdown: 
 
