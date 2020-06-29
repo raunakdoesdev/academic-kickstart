@@ -50,7 +50,7 @@ One of the first papers to quantify the problem of mode collapse was *Improved T
 
 This is accomplished with the following metric: 
 
-{{< video src="https://revresearch.s3.us-east-2.amazonaws.com/InceptionScore.mp4" controls="yes" autoplay>}} 
+{{< video src="https://revresearch.s3.us-east-2.amazonaws.com/InceptionScore.mp4" controls="yes" autoplay="autoplay">}} 
 
 [^1]: Salimans, T., Goodfellow, I., Zaremba, W., Cheung, V., Radford, A., & Chen, X. (2016). Improved techniques for training gans. In *Advances in neural information processing systems* (pp. 2234-2242).
 
