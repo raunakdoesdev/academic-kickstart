@@ -40,7 +40,7 @@ Generative adversarial networks, or GANs, can be used to generate new images by 
 ## Mode Collapse
 The problem is, the generator can get kind of lazy and start outsmarting the discriminator. Let's say your dataset has an equal number of images of people, fountains, and churches. Instead of creating fakes of all of these kinds of images, the generator might learn it's much easier to just create images of fake fountains and ignore the rest.
 
-This is called mode collapse, because certain modes of generation (the people and the churches in this example) are no longer created by the generator. If we think of the generator as a function $G(x) $, then the range of this function (the possible values it can produce) is reduced.
+This is called mode collapse, because certain modes of generation (the people and the churches in this example) are no longer created by the generator. If we think of the generator as a function $G(z) $, then the range of this function (the possible values it can produce) is reduced.
 
 This is a real problem, because it's hard to detect when mode collapse is happening since the main metric, the discriminator, is fooled by the limited modes the generator produces.
 ## Inception Score and Fréchet Inception Distance
@@ -50,7 +50,7 @@ One of the first papers to quantify the problem of mode collapse was *Improved T
 
 This is accomplished with the following metric: 
 
-{{< video src="https://revresearch.s3.us-east-2.amazonaws.com/InceptionScore.mp4" controls="yes" autoplay="autoplay">}} 
+{{< video src="https://revresearch.s3.us-east-2.amazonaws.com/InceptionScore.mp4" controls="no" autoplay="true">}} 
 
 [^1]: Salimans, T., Goodfellow, I., Zaremba, W., Cheung, V., Radford, A., & Chen, X. (2016). Improved techniques for training gans. In *Advances in neural information processing systems* (pp. 2234-2242).
 
