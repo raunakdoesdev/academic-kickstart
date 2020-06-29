@@ -25,6 +25,9 @@ social:
   - icon: github
     icon_pack: fab
     link: https://github.com/sauhaardac/
+  - icon: linkedin
+    icon_pack: fab
+    link: https://www.linkedin.com/in/sauhaarda
 education:
   courses:
     - year: 2024
