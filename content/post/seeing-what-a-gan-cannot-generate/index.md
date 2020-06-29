@@ -28,5 +28,20 @@ image:
 projects: []
 ---
 
-### This is a test
-Hello :)
+###GANs
+Generative adversarial networks, or GANs, can be used to generate new images by taking advantage of the interplay between two neural networks: a generator and a discriminator. The generator is like an art counterfeiter, trying to produce realistic "fake" images, and the discriminator is like an art critic, trying to determine if a given image is real or fake.
+###Mode Collapse
+The problem is, the generator can get kind of lazy and start outsmarting the discriminator. Let's say your dataset has an equal number of images of people, fountains, and churches. Instead of creating fakes of all of these kinds of images, the generator might learn it's much easier to just create images of fake fountains and ignore the rest.
+
+This is called [Mode Collapse(https://www.remnote.io/document/wPimXhP2xCfKX2qv9), because certain modes of generation (the people and the churches in this example) are no longer created by the generator. If we think of the generator as a function $$ G(x) $$, then the range of this function (the possible values it can produce) is reduced.
+
+This is a real problem, because it's hard to detect when mode collapse is happening since the main metric, the discriminator, is fooled by the limited modes the generator produces.
+###Inception Score and Fréchet Inception Distance
+One of the first papers to quantify the problem of mode collapse was __Improved Techniques for Training GANs __[^1]. It proposes a metric which optimizes two factors:
+1. Overall image variety (i.e. there are many different types of images in the dataset)
+2. Individual image specificity (i.e. a particular image is distinctly one thing, not confused with other classes)
+
+This is accomplished with the following metric:
+$$\operatorname{IS}(G)=\exp \left(\mathbb{E}_{\mathbf{x} \sim p_{g}} D_{K L}(p(y \vert \mathbf{x}) \| p(y))\right)$$
+
+Here's an equation breakdown: 
