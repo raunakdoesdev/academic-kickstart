@@ -34,6 +34,8 @@ This is an overview of the paper *Seeing What a GAN Cannot Generate* [^2]
 
 
 
+## Background
+
 ## GANs
 
 Generative adversarial networks, or GANs, can be used to generate new images by taking advantage of the interplay between two neural networks: a generator and a discriminator. The generator is like an art counterfeiter, trying to produce realistic "fake" images, and the discriminator is like an art critic, trying to determine if a given image is real or fake.
@@ -43,7 +45,7 @@ The problem is, the generator can get kind of lazy and start outsmarting the dis
 This is called mode collapse, because certain modes of generation (the people and the churches in this example) are no longer created by the generator. If we think of the generator as a function $G(z) $, then the range of this function (the possible values it can produce) is reduced.
 
 It’s hard to detect when mode collapse is happening because the main metric, the discriminator, is fooled by the limited modes the generator produces.
-## Quantifying GAN Performance
+## Prior Work
 ### Inception Score (IS)
 
 One of the first papers to quantify the quality of a GAN’s generated samples was *Improved Techniques for Training GANs* [^1]. It proposes a metric, called the inception score, which optimizes two factors:
@@ -66,6 +68,8 @@ This method has some drawbacks, though. By encouraging individual image specific
 
 The Fréchet Inception Distance [^frech] attempts to counter some of the shortcomings of the inception score by directly comparing the statistics of the GAN generated samples to the real samples. It also operates on an embedding extracted from an intermediate layer of the Inception Net network, rather than final predictions, allowing it to examine and optimize images in which multiple classes are present.
 
+Here’s the equation:
+
  <video autoplay="autoplay" loop="true">
 <source src="https://revresearch.s3.us-east-2.amazonaws.com/BlogInceptionDistance.mp4" type="video/mp4"></video>
 
@@ -73,7 +77,9 @@ Since it’s original publication, this metric has become the standard for measu
 
 ## Measuring Mode Collapse
 
+### Segmentation
 
+To understand what information is being dropped from generated images, it would be important to understand what “stuff” is in an image in the first place. Thankfully, this is already a field of extensive study: image segmentation. The authors use 
 
 [^frech]: Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard Nessler, and Sepp Hochreiter. 2017. GANs trained by a two time-scale update rule converge to a local nash equilibrium. In *Proceedings of the 31st International Conference on Neural Information Processing Systems* (*NIPS’17*). Curran Associates Inc., Red Hook, NY, USA, 6629–6640.
 
