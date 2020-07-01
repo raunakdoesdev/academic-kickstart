@@ -42,7 +42,7 @@ The problem is, the generator can get kind of lazy and start outsmarting the dis
 
 This is called mode collapse, because certain modes of generation (the people and the churches in this example) are no longer created by the generator. If we think of the generator as a function $G(z) $, then the range of this function (the possible values it can produce) is reduced.
 
-This is a real problem, because it's hard to detect when mode collapse is happening since the main metric, the discriminator, is fooled by the limited modes the generator produces.
+It’s hard to detect when mode collapse is happening because the main metric, the discriminator, is fooled by the limited modes the generator produces.
 ## Inception Score and Fréchet Inception Distance
 One of the first papers to quantify the problem of mode collapse was *Improved Techniques for Training GANs* [^1]. It proposes a metric which optimizes two factors:
 1. Overall image variety (i.e. there are many different types of images in the dataset)
