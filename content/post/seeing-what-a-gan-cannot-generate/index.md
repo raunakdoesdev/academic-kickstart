@@ -36,10 +36,10 @@ This is an overview of the paper *Seeing What a GAN Cannot Generate* [^2]
 
 ## Background
 
-## GANs
+### GANs
 
 Generative adversarial networks, or GANs, can be used to generate new images by taking advantage of the interplay between two neural networks: a generator and a discriminator. The generator is like an art counterfeiter, trying to produce realistic "fake" images, and the discriminator is like an art critic, trying to determine if a given image is real or fake.
-## Mode Collapse
+### Mode Collapse
 The problem is, the generator can get kind of lazy and start outsmarting the discriminator. Let's say your dataset has an equal number of images of people, fountains, and churches. Instead of creating fakes of all of these kinds of images, the generator might learn it's much easier to just create images of fake fountains and ignore the rest.
 
 This is called mode collapse, because certain modes of generation (the people and the churches in this example) are no longer created by the generator. If we think of the generator as a function $G(z) $, then the range of this function (the possible values it can produce) is reduced.
@@ -79,7 +79,16 @@ Since it’s original publication, this metric has become the standard for measu
 
 ### Segmentation
 
-To understand what information is being dropped from generated images, it would be important to understand what “stuff” is in an image in the first place. Thankfully, this is already a field of extensive study: image segmentation. The authors use 
+ <video autoplay="autoplay" loop="true">
+<source src="https://revresearch.s3.us-east-2.amazonaws.com/Segmentation.mp4" type="video/mp4"></video>
 
+To understand what information is being dropped from generated images, it would be important to understand what “stuff” is in an image in the first place. Thankfully, this is already a field of extensive study: image segmentation. The authors use the Unified Perceptual Parsing[^unified] network for this purpose.
+
+[^unified]: Xiao, T., Liu, Y., Zhou, B., Jiang, Y., & Sun, J. (2018). Unified Perceptual Parsing for Scene Understanding. In V. Ferrari, M. Hebert, C. Sminchisescu, & Y. Weiss (Eds.), *Computer Vision – ECCV 2018* (pp. 432–448). Springer International Publishing
 [^frech]: Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard Nessler, and Sepp Hochreiter. 2017. GANs trained by a two time-scale update rule converge to a local nash equilibrium. In *Proceedings of the 31st International Conference on Neural Information Processing Systems* (*NIPS’17*). Curran Associates Inc., Red Hook, NY, USA, 6629–6640.
 
+
+
+
+
+[^ unified]: 
