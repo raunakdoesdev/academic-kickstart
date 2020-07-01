@@ -54,7 +54,7 @@ One of the first papers to quantify the quality of a GAN’s generated samples w
 This is accomplished with the following metric: 
 
 <video autoplay="autoplay" loop="true">
-<source src="https://revresearch.s3.us-east-2.amazonaws.com/InceptionScore.mp4" type="video/mp4"></video>
+<source src="https://revresearch.s3.us-east-2.amazonaws.com/BlogInceptionScore.mp4" type="video/mp4"></video>
 
 Maximizing the inception score means maximizing the KL Divergence between the distributions and improving image variety while reducing individual image specificity.
 
