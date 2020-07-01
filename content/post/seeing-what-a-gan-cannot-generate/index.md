@@ -3,7 +3,7 @@
 
 title: "Seeing What a Gan Cannot Generate"
 subtitle: ""
-summary: ""
+summary: "This is an illustrated summary of the paper *Seeing What a GAN Cannot Generate*"
 authors: []
 tags: []
 categories: []
@@ -64,7 +64,16 @@ This method has some drawbacks, though. By encouraging individual image specific
 
 ### Fréchet Inception Distance (FID)
 
-The Fréchet Inception Distance [^frech] attempts to counter some of the shortcomings of the inception score, by directly comparing the statics of the GAN generated samples to the real samples.
+The Fréchet Inception Distance [^frech] attempts to counter some of the shortcomings of the inception score by directly comparing the statistics of the GAN generated samples to the real samples. It also operates on an embedding extracted from an intermediate layer of the Inception Net network, rather than final predictions, allowing it to examine and optimize images in which multiple classes are present.
+
+ <video autoplay="autoplay" loop="true">
+<source src="https://revresearch.s3.us-east-2.amazonaws.com/BlogInceptionDistance.mp4" type="video/mp4"></video>
+
+Since it’s original publication, this metric has become the standard for measuring the performance of GANs. Yet, this metric also has its shortcomings, the biggest being its interpretability. The Fréchet Inception Distance operates on a “latent space” of the embeddings created Inception network, which have no inherent meaning in themselves. While it may be able to measure mode collapse, we can’t see which modes are collapsing or how much. That’s where *Seeing What a GAN Cannot Generate* comes in.
+
+## Measuring Mode Collapse
+
+
 
 [^frech]: Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard Nessler, and Sepp Hochreiter. 2017. GANs trained by a two time-scale update rule converge to a local nash equilibrium. In *Proceedings of the 31st International Conference on Neural Information Processing Systems* (*NIPS’17*). Curran Associates Inc., Red Hook, NY, USA, 6629–6640.
 
