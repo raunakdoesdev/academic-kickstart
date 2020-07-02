@@ -84,7 +84,7 @@ Since it’s original publication, this metric has become the standard for measu
 
 To understand what information is being dropped from generated images, it would be important to understand what “stuff” is in an image in the first place. Thankfully, this is already a field of extensive study: image segmentation. The authors use the Unified Perceptual Parsing[^unified] network for this purpose. It’s been trained to do pixel-based segmentation (that’s where you classify every pixel into some category) for a huge variety of labels. The authors then 
 
-<iframe width="900" height="500"  frameborder="0" scrolling="no" src="//plotly.com/~sauhaarda/1.embed"></iframe>
+<iframe width="100vw" height="100vw"  frameborder="0" scrolling="no" src="//plotly.com/~sauhaarda/1.embed"></iframe>
 
 [^unified]: Xiao, T., Liu, Y., Zhou, B., Jiang, Y., & Sun, J. (2018). Unified Perceptual Parsing for Scene Understanding. In V. Ferrari, M. Hebert, C. Sminchisescu, & Y. Weiss (Eds.), *Computer Vision – ECCV 2018* (pp. 432–448). Springer International Publishing
 [^frech]: Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard Nessler, and Sepp Hochreiter. 2017. GANs trained by a two time-scale update rule converge to a local nash equilibrium. In *Proceedings of the 31st International Conference on Neural Information Processing Systems* (*NIPS’17*). Curran Associates Inc., Red Hook, NY, USA, 6629–6640.
