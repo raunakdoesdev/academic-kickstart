@@ -55,7 +55,7 @@ One of the first papers to quantify the quality of a GAN’s generated samples w
 
 This is accomplished with the following metric: 
 
-<video autoplay="autoplay" loop="true" muted="true">
+<video autoplay loop muted playsinline>
 <source src="https://revresearch.s3.us-east-2.amazonaws.com/BlogInceptionScore.mp4" type="video/mp4"></video>
 
 Maximizing the inception score means maximizing the KL Divergence between the distributions and improving image variety while reducing individual image specificity.
@@ -70,7 +70,7 @@ The Fréchet Inception Distance [^frech] attempts to counter some of the shortco
 
 Here’s the equation:
 
- <video autoplay="autoplay" loop="true" muted="true">
+ <video autoplay loop muted playsinline>
 <source src="https://revresearch.s3.us-east-2.amazonaws.com/BlogInceptionDistance.mp4" type="video/mp4"></video>
 
 Since it’s original publication, this metric has become the standard for measuring the performance of GANs. Yet, this metric also has its shortcomings, the biggest being its interpretability. The Fréchet Inception Distance operates on a “latent space” of the embeddings created Inception network, which have no inherent meaning in themselves. While it may be able to measure mode collapse, we can’t see which modes are collapsing or how much. That’s where *Seeing What a GAN Cannot Generate* comes in.
@@ -79,10 +79,10 @@ Since it’s original publication, this metric has become the standard for measu
 
 ### Segmentation
 
- <video autoplay="autoplay" loop="true" muted="true">
+ <video autoplay loop muted playsinline>
 <source src="https://revresearch.s3.us-east-2.amazonaws.com/Segmentation.mp4" type="video/mp4"></video>
 
-To understand what information is being dropped from generated images, it would be important to understand what “stuff” is in an image in the first place. Thankfully, this is already a field of extensive study: image segmentation. The authors use the Unified Perceptual Parsing[^unified] network for this purpose.
+To understand what information is being dropped from generated images, it would be important to understand what “stuff” is in an image in the first place. Thankfully, this is already a field of extensive study: image segmentation. The authors use the Unified Perceptual Parsing[^unified] network for this purpose. It’s been trained to do pixel-based segmentation (that’s where you classify every pixel into some category) for a huge variety of labels. The authors then 
 
 [^unified]: Xiao, T., Liu, Y., Zhou, B., Jiang, Y., & Sun, J. (2018). Unified Perceptual Parsing for Scene Understanding. In V. Ferrari, M. Hebert, C. Sminchisescu, & Y. Weiss (Eds.), *Computer Vision – ECCV 2018* (pp. 432–448). Springer International Publishing
 [^frech]: Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard Nessler, and Sepp Hochreiter. 2017. GANs trained by a two time-scale update rule converge to a local nash equilibrium. In *Proceedings of the 31st International Conference on Neural Information Processing Systems* (*NIPS’17*). Curran Associates Inc., Red Hook, NY, USA, 6629–6640.
