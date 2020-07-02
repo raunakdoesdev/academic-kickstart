@@ -28,7 +28,7 @@ image:
 projects: []
 ---
 
-This is an overview of the paper *Seeing What a GAN Cannot Generate* [^2]
+{{% toc %}}
 
 [^2]: [Bau, D., Zhu, J. Y., Wulff, J., Peebles, W., Strobelt, H., Zhou, B., & Torralba, A. (2019). Seeing what a gan cannot generate. In *Proceedings of the IEEE International Conference on Computer Vision* (pp. 4502-4511).](http://ganseeing.csail.mit.edu/)
 
@@ -75,7 +75,7 @@ Here’s the equation:
 
 Since it’s original publication, this metric has become the standard for measuring the performance of GANs. Yet, this metric also has its shortcomings, the biggest being its interpretability. The Fréchet Inception Distance operates on a “latent space” of the embeddings created Inception network, which have no inherent meaning in themselves. While it may be able to measure mode collapse, we can’t see which modes are collapsing or how much. That’s where *Seeing What a GAN Cannot Generate* comes in.
 
-## Measuring Mode Collapse
+## Methodology
 
 ### Segmentation
 
