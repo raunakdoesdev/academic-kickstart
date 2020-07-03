@@ -77,21 +77,32 @@ Since it’s original publication, this metric has become the standard for measu
 
 ## Methodology
 
-### Segmentation
+### Quantifying with Segmentation
 
  <video autoplay loop muted playsinline>
 <source src="https://revresearch.s3.us-east-2.amazonaws.com/Segmentation.mp4" type="video/mp4"></video>
 
-To understand what information is being dropped from generated images, it would be important to understand what “stuff” is in an image in the first place. Thankfully, this is already a field of extensive study: image segmentation. The authors use the Unified Perceptual Parsing[^unified] network for this purpose. It’s been trained to do pixel-based segmentation (that’s where you classify every pixel into some category) for a huge variety of labels. The authors then 
+To understand what information is being dropped from generated images, it would be important to understand what “stuff” is in an image in the first place. Thankfully, this is already a field of extensive study: image segmentation. The authors use the Unified Perceptual Parsing[^unified] network for this purpose. It’s been trained to do pixel-based segmentation (that’s where you classify every pixel into some category) for a huge variety of labels. 
 
-<div class="iframe-container" style="overflow:hidden; padding-top: 75%; position: relative;">
-  <iframe style="border:0; height:100%; left:0; position:absolute; top:0; width:100%;" src="//plotly.com/~sauhaarda/1.embed" allowfullscreen></iframe>
-</div>
+When you examine the differences in the distribution of pixels across these labels for both the real and generated image sets, you get the following plot[^ reldiff]: 
+
+<div class='embed-container'><iframe frameborder='0' scrolling='no' src='//plotly.com/~sauhaarda/1.embed'></iframe></div>
+
+**By plotting against segmented categories, the authors are able to show exactly which modes the GAN system is dropping in its computation, and which modes it’s overrepresenting to compensate.** More difficult classes like hands and people are underrepresented in generated images, while simple textures like rocks, ceiling, and floor are overrepresented.
+
+The authors go on to propose a new metric, called **Fréchet Segmentation Distance (FID)** for quantifying the problem of mode collapse. It’s exactly analogous to the Fréchet Inception Distance (FID) score (uses the same equation), but replaces the uninterpretable Inception embedding with the pixel distribution across the Unified Perceptual Parsing system’s labels. This confers two advantages:
+
+1. The distribution being analyzed has a human-interpretable meaning.
+2. The system can handle multiple classes within one image, and better quantify the problem of mode collapse.
+
+### Visualizing Mode Collapse for Individual Images
+
+
 
 [^unified]: Xiao, T., Liu, Y., Zhou, B., Jiang, Y., & Sun, J. (2018). Unified Perceptual Parsing for Scene Understanding. In V. Ferrari, M. Hebert, C. Sminchisescu, & Y. Weiss (Eds.), *Computer Vision – ECCV 2018* (pp. 432–448). Springer International Publishing
 [^frech]: Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard Nessler, and Sepp Hochreiter. 2017. GANs trained by a two time-scale update rule converge to a local nash equilibrium. In *Proceedings of the 31st International Conference on Neural Information Processing Systems* (*NIPS’17*). Curran Associates Inc., Red Hook, NY, USA, 6629–6640.
 
-
+[^ reldiff]: The data in this figure were extracted from http://ganseeing.csail.mit.edu/ using WebPlotDigitizer, and then replotted. Due to this process, there may be some negligible noise in the relative difference values.
 
 
 
