@@ -10,7 +10,7 @@ categories: []
 date: 2020-06-28T13:24:04-07:00
 lastmod: 2020-06-28T13:24:04-07:00
 featured: true
-draft: false
+draft: true
 
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder.
@@ -77,7 +77,7 @@ Since it’s original publication, this metric has become the standard for measu
 
 ## Methodology
 
-### Quantifying with Segmentation
+### Quantifying Mode Collapse with Segmentation
 
  <video autoplay loop muted playsinline>
 <source src="https://revresearch.s3.us-east-2.amazonaws.com/Segmentation.mp4" type="video/mp4"></video>
@@ -87,17 +87,21 @@ To understand what information is being dropped from generated images, it would 
 When you examine the differences in the distribution of pixels across these labels for both the real and generated image sets, you get the following plot[^ reldiff]: 
 
 <div class='embed-container'><iframe frameborder='0' scrolling='no' src='//plotly.com/~sauhaarda/1.embed'></iframe></div>
-
-**By plotting against segmented categories, the authors are able to show exactly which modes the GAN system is dropping in its computation, and which modes it’s overrepresenting to compensate.** More difficult classes like hands and people are underrepresented in generated images, while simple textures like rocks, ceiling, and floor are overrepresented.
+**By plotting against segmented categories, the authors are able to show exactly which modes the GAN system is dropping in its computation and which modes it’s overrepresenting to compensate.** More difficult classes like hands and people are underrepresented in generated images, while simple textures like rocks, ceiling, and floor are overrepresented.
 
 The authors go on to propose a new metric, called **Fréchet Segmentation Distance (FID)** for quantifying the problem of mode collapse. It’s exactly analogous to the Fréchet Inception Distance (FID) score (uses the same equation), but replaces the uninterpretable Inception embedding with the pixel distribution across the Unified Perceptual Parsing system’s labels. This confers two advantages:
 
 1. The distribution being analyzed has a human-interpretable meaning.
 2. The system can handle multiple classes within one image, and better quantify the problem of mode collapse.
 
-### Visualizing Mode Collapse for Individual Images
+### Visualizing Mode Collapse in Individual Images
 
+In the next section, the authors propose a method of visualizing mode collapse for individual images.  If we want to find out what the GAN can’t generate, one thing we can do is to try to get it to replicate an image. The parts of the image it can’t replicate will correspond with the modes that have collapsed.
 
+In math formulation, this would look something like:
+$argmin blah blah$
+
+Should be easy, right? The problem is that first step, finding the right random noise, $z$, which when fed back into the network will produce something close to the image that you want. The neural network used as a generator is so big and has so many parameters that’s it’s pretty much impossible.
 
 [^unified]: Xiao, T., Liu, Y., Zhou, B., Jiang, Y., & Sun, J. (2018). Unified Perceptual Parsing for Scene Understanding. In V. Ferrari, M. Hebert, C. Sminchisescu, & Y. Weiss (Eds.), *Computer Vision – ECCV 2018* (pp. 432–448). Springer International Publishing
 [^frech]: Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard Nessler, and Sepp Hochreiter. 2017. GANs trained by a two time-scale update rule converge to a local nash equilibrium. In *Proceedings of the 31st International Conference on Neural Information Processing Systems* (*NIPS’17*). Curran Associates Inc., Red Hook, NY, USA, 6629–6640.
