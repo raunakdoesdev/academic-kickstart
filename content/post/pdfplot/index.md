@@ -31,7 +31,9 @@ projects: []
 ## Package
 
 GitHub: [https://github.com/sauhaardac/pdfplot](https://github.com/sauhaardac/pdfplot)
+
 PyPI: [https://pypi.org/project/pdfplot/](https://pypi.org/project/pdfplot/)
+
 Install instructions: `pip install pdfplot`
 
 ## Background
