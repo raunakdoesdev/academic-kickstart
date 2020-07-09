@@ -70,7 +70,7 @@ These features can be toggled via arguments to the save_figs method.
 
 
 
-You can also overload the make_fig method  your plots to adjust all of your plots, simultaneously. If you want a grid, just update make_fig:
+You can also overload the `make_fig` method  your plots to adjust all of your plots, simultaneously. If you want a grid, just update `make_fig`:
 
 ```python
 def make_fig():
