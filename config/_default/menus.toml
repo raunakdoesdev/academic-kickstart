@@ -28,6 +28,11 @@
   url = "#certifications"
   weight = 50
 
+[[main]]
+  name = "Posts"
+  url = "#posts"
+  weight = 60
+
 # Link to a PDF of your resume/CV from the menu.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
 [[main]]

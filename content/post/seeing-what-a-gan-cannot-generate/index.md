@@ -7,18 +7,18 @@ summary: "This is an illustrated summary of the paper *Seeing What a GAN Cannot 
 authors: []
 tags: []
 categories: []
-date: 2020-06-28T13:24:04-07:00
-lastmod: 2020-06-28T13:24:04-07:00
+date: 2020-07-11T13:24:04-07:00
+lastmod: 2020-07-11T13:24:04-07:00
 featured: true
-draft: true
+draft: false
 
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder.
 # Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
 image:
   caption: ""
-  focal_point: ""
-  preview_only: false
+  focal_point: "Smart"
+  preview_only: true
 
 # Projects (optional).
 #   Associate this post with one or more of your projects.
@@ -32,7 +32,8 @@ projects: []
 
 [^2]: [Bau, D., Zhu, J. Y., Wulff, J., Peebles, W., Strobelt, H., Zhou, B., & Torralba, A. (2019). Seeing what a gan cannot generate. In *Proceedings of the IEEE International Conference on Computer Vision* (pp. 4502-4511).](http://ganseeing.csail.mit.edu/)
 
-
+## Intro
+This is a summary of the research paper, *Seeing What a GAN Cannot Generate*.[^2] The authors of this paper have full rights over this work. I’ll be breaking down their paper for a more lay audience in this post.
 
 ## Background
 
@@ -62,7 +63,7 @@ Maximizing the inception score means maximizing the KL Divergence between the di
 
 This method has some drawbacks, though. By encouraging individual image specificity, this metric penalizes scenes with multiple objects in them, as might be desired from the generative model. The inception score also operates “in a vacuum” because it only considers the distribution of generated images, ignoring the training data completely.
 
-[^1]: Salimans, T., Goodfellow, I., Zaremba, W., Cheung, V., Radford, A., & Chen, X. (2016). Improved techniques for training gans. In *Advances in neural information processing systems* (pp. 2234-2242).
+[^1]: [Salimans, T., Goodfellow, I., Zaremba, W., Cheung, V., Radford, A., & Chen, X. (2016). Improved techniques for training gans. In *Advances in neural information processing systems* (pp. 2234-2242).](https://papers.nips.cc/paper/6124-improved-techniques-for-training-gans)
 
 ### Fréchet Inception Distance (FID)
 
@@ -75,9 +76,9 @@ Here’s the equation:
 
 Since it’s original publication, this metric has become the standard for measuring the performance of GANs. Yet, this metric also has its shortcomings, the biggest being its interpretability. The Fréchet Inception Distance operates on a “latent space” of the embeddings created Inception network, which have no inherent meaning in themselves. While it may be able to measure mode collapse, we can’t see which modes are collapsing or how much. That’s where *Seeing What a GAN Cannot Generate* comes in.
 
-## Methodology
 
-### Quantifying Mode Collapse with Segmentation
+
+## Quantifying Mode Collapse with Segmentation
 
  <video autoplay loop muted playsinline>
 <source src="https://revresearch.s3.us-east-2.amazonaws.com/Segmentation.mp4" type="video/mp4"></video>
@@ -94,20 +95,47 @@ The authors go on to propose a new metric, called **Fréchet Segmentation Distan
 1. The distribution being analyzed has a human-interpretable meaning.
 2. The system can handle multiple classes within one image, and better quantify the problem of mode collapse.
 
-### Visualizing Mode Collapse in Individual Images
+## Visualizing Mode Collapse in Individual Images
+
+{{< figure src="ablation-01.png" caption="Approach Comparison" lightbox="true" >}}
 
 In the next section, the authors propose a method of visualizing mode collapse for individual images.  If we want to find out what the GAN can’t generate, one thing we can do is to try to get it to replicate an image. The parts of the image it can’t replicate will correspond with the modes that have collapsed.
 
-In math formulation, this would look something like:
-$argmin blah blah$
+In more formal notation, this would look something like this: (placeholder raw equations, will add video later…)
+$$\mathbf{z}^{*}=\arg \min _{\mathbf{z}} \ell(G(\mathbf{z}), \mathbf{x})$$
 
-Should be easy, right? The problem is that first step, finding the right random noise, $z$, which when fed back into the network will produce something close to the image that you want. The neural network used as a generator is so big and has so many parameters that’s it’s pretty much impossible.
+$$\mathbf{x}^{\prime}=G\left(\mathbf{z}^{*}\right)$$
 
-[^unified]: Xiao, T., Liu, Y., Zhou, B., Jiang, Y., & Sun, J. (2018). Unified Perceptual Parsing for Scene Understanding. In V. Ferrari, M. Hebert, C. Sminchisescu, & Y. Weiss (Eds.), *Computer Vision – ECCV 2018* (pp. 432–448). Springer International Publishing
-[^frech]: Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard Nessler, and Sepp Hochreiter. 2017. GANs trained by a two time-scale update rule converge to a local nash equilibrium. In *Proceedings of the 31st International Conference on Neural Information Processing Systems* (*NIPS’17*). Curran Associates Inc., Red Hook, NY, USA, 6629–6640.
+The authors tried six different ways of approaching this problem of finding the right $z$:
 
-[^ reldiff]: The data in this figure were extracted from http://ganseeing.csail.mit.edu/ using WebPlotDigitizer, and then replotted. Due to this process, there may be some negligible noise in the relative difference values.
+{{< figure src="ablation-01.png" lightbox="true" >}}
 
+1. **Baseline - Optimize $\textbf{z}$** - this is by far the simplest method, and it involves starting with a random $z$ and slowly tweaking it to get the output of the generator to look more like the desired image. This tweaking process is called *gradient descent*. Unfortunately, the neural networks commonly used as generators are complex and have too many parameters for this approach to generate meaningful results. By just optimizing $z$, the generated images are very different from the “goal” image the authors attempt to replicate, as seen in the figure above.
+2. **Baseline - Learn $\textbf{E}$ directly** - Another approach is to train a deep neural network, E, to take an image as input and output a $z$ for it which when plugged into the generator, creates a similar image. This method does slightly better then the direct optimization, because it uses a deep neural network to learn more generalized rules, but the results are still pretty poor.
+3. **Baseline - direct $\textbf{E}$ then $\textbf{z}$** - A different approach[^savage] is to use the trained $E$ from #2 to generate an initial guess for $z$ and then optimize it further using the gradient descent described in #1. Again, this does better, but to quote the authors, “the reconstructions are far from satisfactory.” Savage 😂!
+4. **Ablation - layered $E$ alone** - This is where we get into the authors’ novel contributions. Instead of training the entire $E$ deep neural network at once, they train the layers of $E$ separately to invert each individual layer of $G$. Once this is done, they assemble these separately trained layers of $E$ and finetune them to invert $G$ as a whole. This layer-wise approach reduces the number of parameters being optimized at each step and significantly improves the overall quality the outputted $z$.
+5. **Ablation - layered $E$ alone** - Analogous to #3, this approach uses the trained E from #4 to generate an initial guess for $z$ and optimizes it further using gradient descent. This marginally improves the prediction.
+6.  **Final - layered $E$ then $r$** - This is the final approach the authors use. Instead of directly taking the outputted $z$ and sticking it into the generator network, the authors split the generator, $G$ into two halves.  Plugging $z$ into the first half, they end up with an intermediate output, $r$. They then run gradient descent to optimize $r$ in order to make the image outputted by the second half of the generator closer to the desired image. The key point here, though, is that the authors are solving a simpler subproblem with this approach. <u>They are identifying the mode collapse in the second half of the generator G, claiming that this is an approximation of the mode collapse in the generator as a whole.</u>
 
+With this method, we are finally able to “See What a GAN Cannot Generate.” The authors run their visualization algorithm on two standard datasets: LSUN bedrooms and LSUN churches. They also visualize their trained models with unrelated images to confirm that unseen objects are dropped in the final visualization. Not only are they dropped, the network often converts one mode to another. In one case, a dining room table with a white tablecloth is turned into a bed with a white bed sheet.
 
-[^ unified]: 
+{{< figure src="results-01.png" lightbox="true" >}}
+
+## Conclusion
+
+To sum it all up, the authors provide two ways to measure mode collapse:
+
+1. Identify which modes are collapsing by quantifying the relative difference in the distribution of segmented classes over real and generated images.
+2. Visualize the mode drop by inverting the generator, revealing exactly which part of a given image the GAN cannot generate.
+
+Notably, the authors don’t attempt to solve the problem of mode collapse, just characterize it. If you’d like to know how mode collapse can mitigated, look into recent techniques such as Veegan[^veegan] and PresGAN[^presgan].
+
+[^savage]: [Zhu, J. Y., Krähenbühl, P., Shechtman, E., & Efros, A. A. (2016, October). Generative visual manipulation on the natural image manifold. In *European conference on computer vision* (pp. 597-613). Springer, Cham.](https://link.springer.com/chapter/10.1007/978-3-319-46454-1_36)
+[^unified]: [Xiao, T., Liu, Y., Zhou, B., Jiang, Y., & Sun, J. (2018). Unified Perceptual Parsing for Scene Understanding. In V. Ferrari, M. Hebert, C. Sminchisescu, & Y. Weiss (Eds.), *Computer Vision – ECCV 2018* (pp. 432–448). Springer International Publishing.](https://openaccess.thecvf.com/content_ECCV_2018/papers/Tete_Xiao_Unified_Perceptual_Parsing_ECCV_2018_paper.pdf)
+[^frech]: [Heusel, M., Ramsauer, H., Unterthiner, T., Nessler, B., & Hochreiter, S. (2017). Gans trained by a two time-scale update rule converge to a local nash equilibrium. In *Advances in neural information processing systems* (pp. 6626-6637).](https://dl.acm.org/doi/10.5555/3295222.3295408)
+
+[^ reldiff]: The data in this figure were extracted from http://ganseeing.csail.mit.edu/ using WebPlotDigitizer, and then replotted. Due to this process, there may be some noise in the relative difference values.
+
+[^ veegan]: [Srivastava, A., Valkov, L., Russell, C., Gutmann, M. U., & Sutton, C. (2017). Veegan: Reducing mode collapse in gans using implicit variational learning. In *Advances in Neural Information Processing Systems* (pp. 3308-3318).](http://papers.nips.cc/paper/6923-veegan-reducing-mode-collapse-in-gans-using-implicit-variational-learning)
+[^presgan]: [Dieng, A. B., Ruiz, F. J., Blei, D. M., & Titsias, M. K. (2019). Prescribed generative adversarial networks. *arXiv preprint arXiv:1910.04302*.](https://arxiv.org/abs/1910.04302)
+
