@@ -4,11 +4,11 @@
 title: "Seeing What a Gan Cannot Generate"
 subtitle: ""
 summary: "This is an illustrated summary of the paper *Seeing What a GAN Cannot Generate*"
-authors: []
+authors: ['admin']
 tags: []
 categories: []
-date: 2020-07-11T13:24:04-07:00
-lastmod: 2020-07-11T13:24:04-07:00
+date: 2020-08-14T13:24:04-07:00
+lastmod: 2020-08-14T13:24:04-07:00
 featured: true
 draft: false
 
@@ -28,6 +28,7 @@ image:
 projects: []
 ---
 
+
 {{% toc %}}
 
 [^2]: [Bau, D., Zhu, J. Y., Wulff, J., Peebles, W., Strobelt, H., Zhou, B., & Torralba, A. (2019). Seeing what a gan cannot generate. In *Proceedings of the IEEE International Conference on Computer Vision* (pp. 4502-4511).](http://ganseeing.csail.mit.edu/)
@@ -35,9 +36,14 @@ projects: []
 ## Intro
 This is a summary of the research paper, *Seeing What a GAN Cannot Generate*.[^2] The authors of this paper have full rights over this work. I’ll be breaking down their paper for a more lay audience in this post.
 
+### Video Overview
+As an experiment, this blog post was adapted into a video format, with narration accompanied by live annotation. Feedback is welcome.
+{{< youtube J9k83wShQ7c >}}
+
 ## Background
 
-### GANs
+<video autoplay loop muted playsinline>
+<source src="https://revresearch.s3.us-east-2.amazonaws.com/Background.mp4" type="video/mp4"></video>
 
 Generative adversarial networks, or GANs, can be used to generate new images by taking advantage of the interplay between two neural networks: a generator and a discriminator. The generator is like an art counterfeiter, trying to produce realistic "fake" images, and the discriminator is like an art critic, trying to determine if a given image is real or fake.
 ### Mode Collapse
@@ -74,7 +80,7 @@ Here’s the equation:
  <video autoplay loop muted playsinline>
 <source src="https://revresearch.s3.us-east-2.amazonaws.com/BlogInceptionDistance.mp4" type="video/mp4"></video>
 
-Since it’s original publication, this metric has become the standard for measuring the performance of GANs. Yet, this metric also has its shortcomings, the biggest being its interpretability. The Fréchet Inception Distance operates on a “latent space” of the embeddings created Inception network, which have no inherent meaning in themselves. While it may be able to measure mode collapse, we can’t see which modes are collapsing or how much. That’s where *Seeing What a GAN Cannot Generate* comes in.
+Since its original publication, this metric has become the standard for measuring the performance of GANs. Yet, this metric also has its shortcomings, the biggest being its interpretability. The Fréchet Inception Distance operates on a “latent space” of the embeddings created Inception network, which have no inherent meaning in themselves. While it may be able to measure mode collapse, we can’t see which modes are collapsing or how much. That’s where *Seeing What a GAN Cannot Generate* comes in.
 
 
 
@@ -101,18 +107,15 @@ The authors go on to propose a new metric, called **Fréchet Segmentation Distan
 
 In the next section, the authors propose a method of visualizing mode collapse for individual images.  If we want to find out what the GAN can’t generate, one thing we can do is to try to get it to replicate an image. The parts of the image it can’t replicate will correspond with the modes that have collapsed.
 
-In more formal notation, this would look something like this: (placeholder raw equations, will add video later…)
-$$\mathbf{z}^{*}=\arg \min _{\mathbf{z}} \ell(G(\mathbf{z}), \mathbf{x})$$
-
-$$\mathbf{x}^{\prime}=G\left(\mathbf{z}^{*}\right)$$
+Before exploring this concept, it’s important to take a closer look at one element of how a generative adversarial system works. In order to generate random images, the generator acts as a function which takes in a source of entropy, or randomness, denoted $z$. For random values of $z$, the network will produce completely different images, but a specific input $z$ will always produce the same result. In this way, getting the GAN to replicate an image can be reduced to the problem of finding the best $z$, which when fed into the generator, produces a result closest to the desired image (minus any mode collapse of course).
 
 The authors tried six different ways of approaching this problem of finding the right $z$:
 
 {{< figure src="ablation-01.png" lightbox="true" >}}
 
-1. **Baseline - Optimize $\textbf{z}$** - this is by far the simplest method, and it involves starting with a random $z$ and slowly tweaking it to get the output of the generator to look more like the desired image. This tweaking process is called *gradient descent*. Unfortunately, the neural networks commonly used as generators are complex and have too many parameters for this approach to generate meaningful results. By just optimizing $z$, the generated images are very different from the “goal” image the authors attempt to replicate, as seen in the figure above.
-2. **Baseline - Learn $\textbf{E}$ directly** - Another approach is to train a deep neural network, E, to take an image as input and output a $z$ for it which when plugged into the generator, creates a similar image. This method does slightly better then the direct optimization, because it uses a deep neural network to learn more generalized rules, but the results are still pretty poor.
-3. **Baseline - direct $\textbf{E}$ then $\textbf{z}$** - A different approach[^savage] is to use the trained $E$ from #2 to generate an initial guess for $z$ and then optimize it further using the gradient descent described in #1. Again, this does better, but to quote the authors, “the reconstructions are far from satisfactory.” Savage 😂!
+1. **Baseline - Optimize $\textbf{z}$** - this is by far the simplest method, and it involves starting with a random $z$ and slowly tweaking it to get the output of the generator to look more like the desired image. This tweaking process is called *gradient descent*. Unfortunately, the neural networks commonly used as generators are complex and have too many parameters.  With this approach, the generated images are very different from the “goal” image the authors attempt to replicate, as seen in the figure above.
+2. **Baseline - Learn $\textbf{E}$ directly** - Another approach is to train a deep neural network, E, to take an image as input and output a $z$, which, when plugged into the generator, creates a similar image. This method does slightly better than the direct optimization because it uses a deep neural network to learn more generalized rules, but the results are still pretty poor.
+3. **Baseline - direct $\textbf{E}$ then $\textbf{z}$** - A different approach[^savage] is to use the trained $E$ from #2 to generate an initial guess for $z$ . This initial guess can then be optimized further using the gradient descent described in #1. Again, this does better, but to quote the authors, “the reconstructions are far from satisfactory.” Savage!
 4. **Ablation - layered $E$ alone** - This is where we get into the authors’ novel contributions. Instead of training the entire $E$ deep neural network at once, they train the layers of $E$ separately to invert each individual layer of $G$. Once this is done, they assemble these separately trained layers of $E$ and finetune them to invert $G$ as a whole. This layer-wise approach reduces the number of parameters being optimized at each step and significantly improves the overall quality the outputted $z$.
 5. **Ablation - layered $E$ alone** - Analogous to #3, this approach uses the trained E from #4 to generate an initial guess for $z$ and optimizes it further using gradient descent. This marginally improves the prediction.
 6.  **Final - layered $E$ then $r$** - This is the final approach the authors use. Instead of directly taking the outputted $z$ and sticking it into the generator network, the authors split the generator, $G$ into two halves.  Plugging $z$ into the first half, they end up with an intermediate output, $r$. They then run gradient descent to optimize $r$ in order to make the image outputted by the second half of the generator closer to the desired image. The key point here, though, is that the authors are solving a simpler subproblem with this approach. <u>They are identifying the mode collapse in the second half of the generator G, claiming that this is an approximation of the mode collapse in the generator as a whole.</u>
@@ -136,6 +139,5 @@ Notably, the authors don’t attempt to solve the problem of mode collapse, just
 
 [^ reldiff]: The data in this figure were extracted from http://ganseeing.csail.mit.edu/ using WebPlotDigitizer, and then replotted. Due to this process, there may be some noise in the relative difference values.
 
-[^ veegan]: [Srivastava, A., Valkov, L., Russell, C., Gutmann, M. U., & Sutton, C. (2017). Veegan: Reducing mode collapse in gans using implicit variational learning. In *Advances in Neural Information Processing Systems* (pp. 3308-3318).](http://papers.nips.cc/paper/6923-veegan-reducing-mode-collapse-in-gans-using-implicit-variational-learning)
 [^presgan]: [Dieng, A. B., Ruiz, F. J., Blei, D. M., & Titsias, M. K. (2019). Prescribed generative adversarial networks. *arXiv preprint arXiv:1910.04302*.](https://arxiv.org/abs/1910.04302)
-
+[^veegan]: [Srivastava, A., Valkov, L., Russell, C., Gutmann, M. U., & Sutton, C. (2017). Veegan: Reducing mode collapse in gans using implicit variational learning. In *Advances in Neural Information Processing Systems* (pp. 3308-3318).](http://papers.nips.cc/paper/6923-veegan-reducing-mode-collapse-in-gans-using-implicit-variational-learning)
