@@ -31,7 +31,7 @@ social:
 education:
   courses:
     - year: 2024
-      course: BSc in Computer Science, Cognitive Science, and Economics
+      course: BSc in Electrical Engineering and Computer Science
       institution: Massachusetts Institute of Technology
 email: raunakc@mit.edu
 user_groups:
