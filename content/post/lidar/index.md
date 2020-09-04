@@ -47,7 +47,7 @@ labels = open_mask('/content/drive/My Drive/geotiff/GRSS_DFC_GT_TR.tif')
 img.show(y=labels, alpha=0.5, figsize=(25, 25))
 ```
 
-{{< figure src="Segmenting_Aerial_LIDAR_4_0.png">}}
+{{< figure src="featured.png">}}
 
 
 The data is pretty uniformly distributed vertically. To get a roughly uniform distribution of classes between training and validation, I decide to have the validation set be the bottom 1/10 of the image. **This is DEFINITELY not the best approach to take, but it is simple to implement. In the future, splitting the image into grids and then sampling the grids to ensure the training and validation have similar distributions is the way to go.**
