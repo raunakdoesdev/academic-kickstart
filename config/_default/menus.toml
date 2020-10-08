@@ -37,5 +37,5 @@
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
 [[main]]
    name = "Resume"
-   url = "https://docs.google.com/document/d/1_3KQ49ak7WtOuNZaM0BB4M61RnLAEJbiahvzHtnYuvM/export?format=pdf"
+   url = "https://revresearch.s3.us-east-2.amazonaws.com/Sauhaarda+Chowdhuri.pdf"
    weight = 70
