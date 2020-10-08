@@ -18,6 +18,38 @@ date_format = "Jan 2006"
 #   Leave `date_end` empty if it's your current employer.
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
 [[experience]]
+  title = "Machine Learning Researcher - Perception Team"
+  company = "MIT Driverless"
+  company_url = "https://driverless.mit.edu/"
+  location = "Cambridge, Massachusetts"
+  date_start = "2020-10-01"
+  date_end = ""
+  description = """
+- Designing architectures for segmentation and object detection optimized for high speed racing inference.
+  """
+[[experience]]
+  title = "Assistant Researcher"
+  company = "MIT Computer Science and Artificial Intelligence Lab"
+  company_url = "https://groups.csail.mit.edu/vision/torralbalab"
+  location = "Cambridge, Massachusetts"
+  date_start = "2020-09-01"
+  date_end = ""
+  description = """
+- Developing new methods for transferable black-box adversarial perturbations for machine learning.
+  """
+  
+[[experience]]
+  title = "Machine Learning Research Consultant"
+  company = "MIT Lincoln Labs and MIT Environmental Sustainability Initiative"
+  company_url = "https://environmentalsolutions.mit.edu/relationship-building-in-colombia/"
+  location = "Cambridge, Massachusetts"
+  date_start = "2020-09-01"
+  date_end = ""
+  description = """
+- Collaborating in a high-stakes multi-shareholder process to deliver aerial LIDAR landslide predictions to assist in the creation of environmental solutions for Colombia.
+  """
+
+[[experience]]
   title = "Assistant Researcher"
   company = "Carnegie Mellon University - Guruswami Group"
   company_url = "http://www.cs.cmu.edu/~venkatg/"
@@ -25,8 +57,8 @@ date_format = "Jan 2006"
   date_start = "2020-06-01"
   date_end = ""
   description = """
-- Generating new audio samples using state-of-the-art Transformer techniques
-- Designed a machine learning pipeline for extracting audio metadata from ethnic music
+- Led a team to develop efficient AI tools for music analysis, speeding up my prior independent research by nearly 800%.
+- Ongoing efforts towards first-author publication in late 2020.
   """
   
 [[experience]]

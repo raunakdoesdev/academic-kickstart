@@ -30,7 +30,7 @@ social:
     link: https://www.linkedin.com/in/sauhaarda
 education:
   courses:
-    - year: 2024
+    - year: 2023
       course: BSc in Electrical Engineering and Computer Science
       institution: Massachusetts Institute of Technology
 email: raunakc@mit.edu
