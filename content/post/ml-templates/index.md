@@ -20,7 +20,7 @@ projects: []
 
 I was watching an old Thomas Frank video recently that talked about the importance of reproducible templates for many workflows: {{< youtube 01DBbTQwYIE>}}
 
-According to the video, these kinds of templated checklists are critical organizational tools for a lot of people–including NASA engineers and surgeons.
+According to the video, templated checklists are critical organizational tools for a lot of people–including NASA engineers and surgeons.
 
 This prompted some thinking about my own workflow recently, which has involved making a ton of different machine learning codebases for various ML projects I’m working on. A lot of the code between these projects is boilerplate, stuff that’s repeated over and over. An example would be my config management system (which is pretty slick by the way – I’ll post about that another time). I end up copy pasting the code for it between all my projects, or worse, reimplementing the same thing for every new project. Small inconsistencies between the setup of the different projects also get annoying.
 
